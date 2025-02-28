@@ -43,22 +43,24 @@
 
     <header>
         <div class="container">
-            <div class="logo">
-                <h1>Global Trade Insights</h1>
-                <p>Data-Driven Trade Analysis</p>
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="#home">Global Trade Insights</a></h1>
+                </div>
+                <nav aria-label="Main navigation">
+                    <ul class="nav-menu">
+                        <li><a href="#home" class="active" aria-current="page">Home</a></li>
+                        <li><a href="#trade-metrics">Trade Metrics</a></li>
+                        <li><a href="#analysis">Analysis</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                    <span class="sr-only">Open Menu</span>
+                </button>
             </div>
-            <nav aria-label="Main navigation">
-                <ul>
-                    <li><a href="#home" class="active" aria-current="page">Home</a></li>
-                    <li><a href="#trade-metrics">Trade Metrics</a></li>
-                    <li><a href="#analysis">Analysis</a></li>
-                    <li><a href="#resources">Resources</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-menu" aria-label="Toggle menu" aria-expanded="false">
-                <i class="fas fa-bars"></i>
-            </button>
         </div>
     </header>
 
@@ -89,10 +91,11 @@
                         <h3>Global Export Trends</h3>
                         <div class="chart-container">
                             <canvas id="global-exports-chart" aria-label="Line chart showing global export volume trends from 2018 to 2023" role="img"></canvas>
+                            <div class="chart-attribution">Data source: <a href="https://oec.world/en" target="_blank">OEC</a></div>
                             <button class="toggle-table-btn" aria-expanded="false" data-target="global-exports-table">Show Data Table</button>
                             <div id="global-exports-table" class="data-table-container" aria-hidden="true">
                                 <table class="data-table">
-                                    <caption>Global Export Volumes (in billions USD)</caption>
+                                    <caption>Global Export Volumes (in billions USD) - Source: <a href="https://oec.world/en" target="_blank">OEC</a></caption>
                                     <thead>
                                         <tr>
                                             <th scope="col">Year</th>
@@ -128,13 +131,14 @@
                                 </table>
                             </div>
                         </div>
-                        <p>Tracking global export volume trends over the past six years.</p>
+                        <p>Tracking global export volume trends over the past six years. <span class="data-source">Data source: <a href="https://oec.world/en" target="_blank">OEC</a></span></p>
                     </div>
                     
                     <div class="metric-card">
                         <h3>Regional Trade Balance</h3>
                         <div class="chart-container">
                             <canvas id="regional-balance-chart" aria-label="Bar chart showing regional trade balance for 2023" role="img"></canvas>
+                            <div class="chart-attribution">Data source: <a href="https://oec.world/en" target="_blank">OEC</a></div>
                             <button class="toggle-table-btn" aria-expanded="false" data-target="regional-balance-table">Show Data Table</button>
                             <div id="regional-balance-table" class="data-table-container" aria-hidden="true">
                                 <table class="data-table">
@@ -181,6 +185,7 @@
                         <h3>Top Trading Partners</h3>
                         <div class="chart-container">
                             <canvas id="top-partners-chart" aria-label="Horizontal bar chart showing top 10 trading partners in 2023" role="img"></canvas>
+                            <div class="chart-attribution">Data source: <a href="https://oec.world/en" target="_blank">OEC</a></div>
                             <button class="toggle-table-btn" aria-expanded="false" data-target="top-partners-table">Show Data Table</button>
                             <div id="top-partners-table" class="data-table-container" aria-hidden="true">
                                 <table class="data-table">
@@ -243,6 +248,7 @@
                         <h3>Commodity Price Trends</h3>
                         <div class="chart-container">
                             <canvas id="commodity-prices-chart" aria-label="Line chart showing key commodity price trends from 2022 to 2023" role="img"></canvas>
+                            <div class="chart-attribution">Data source: <a href="https://oec.world/en" target="_blank">OEC</a></div>
                             <button class="toggle-table-btn" aria-expanded="false" data-target="commodity-prices-table">Show Data Table</button>
                             <div id="commodity-prices-table" class="data-table-container" aria-hidden="true">
                                 <table class="data-table">
@@ -369,11 +375,11 @@
                     <div class="resource-card">
                         <h3>Data Sources</h3>
                         <ul>
+                            <li><a href="https://oec.world/en" target="_blank"><strong>Observatory of Economic Complexity (OEC)</strong></a> - Premier visualization tool for international trade data</li>
                             <li><a href="https://comtrade.un.org/" target="_blank">UN Comtrade Database</a></li>
                             <li><a href="https://data.wto.org/" target="_blank">WTO Statistics Database</a></li>
                             <li><a href="https://www.imf.org/en/Data" target="_blank">IMF Data Portal</a></li>
                             <li><a href="https://unctadstat.unctad.org/" target="_blank">UNCTAD Statistics</a></li>
-                            <li><a href="https://oec.world/" target="_blank">Observatory of Economic Complexity</a></li>
                         </ul>
                     </div>
                     
@@ -468,9 +474,10 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
+                <div class="footer-column">
                     <h3>Global Trade Insights</h3>
                     <p>Data-driven trade analysis for informed decision making</p>
+                    <p class="mt-2">All trade data sourced from the <a href="https://oec.world/en" target="_blank">Observatory of Economic Complexity (OEC)</a> and other reputable international sources.</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">

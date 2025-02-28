@@ -205,13 +205,13 @@ header {
     color: white;
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 1rem 0;
 }
 
 .header-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 1rem 0;
 }
 
 .logo h1 {
@@ -232,6 +232,8 @@ nav {
 .nav-menu {
     display: flex;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-menu li {
@@ -262,13 +264,13 @@ nav {
 }
 
 .mobile-menu-toggle {
-    display: none;
     background: none;
     border: none;
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
     padding: 0.5rem;
+    display: none; /* Hidden by default on all screens */
 }
 
 /* ===== HERO SECTION ===== */
@@ -327,17 +329,16 @@ nav {
 }
 
 .metric-card {
-    background: var(--bg-white);
-    border-radius: var(--radius-md);
-    padding: var(--spacing-lg);
-    box-shadow: var(--shadow-md);
+    background-color: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 100%;
 }
 
 .metric-card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .metric-card h3 {
@@ -347,8 +348,13 @@ nav {
 }
 
 .chart-container {
-    height: 250px;
-    margin-bottom: var(--spacing-md);
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    height: 350px;
 }
 
 /* ===== ANALYSIS SECTION ===== */
@@ -656,7 +662,11 @@ footer {
 
 @media (max-width: 768px) {
     .mobile-menu-toggle {
-        display: block;
+        display: block; /* Visible on mobile screens */
+        position: absolute;
+        right: 20px;
+        top: 28px;
+        z-index: 1000;
     }
     
     .nav-menu {
@@ -725,6 +735,17 @@ footer {
     .cookie-buttons {
         width: 100%;
         justify-content: center;
+    }
+    
+    /* Make sure the menu is closed by default on mobile */
+    body:not(.menu-open) .nav-menu {
+        display: none;
+        opacity: 0;
+    }
+    
+    body.menu-open .nav-menu {
+        display: flex;
+        opacity: 1;
     }
 }
 
@@ -914,4 +935,68 @@ footer {
 .analysis-grid > *:nth-child(4),
 .resources-grid > *:nth-child(4) {
     transition-delay: 0.4s;
+}
+
+/* Data source attribution styling */
+.data-source {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    font-style: italic;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.data-source a {
+    text-decoration: underline;
+}
+
+/* Ensure proper data table styling */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.data-table caption {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.data-table th,
+.data-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--gray-300);
+}
+
+.data-table th {
+    background-color: var(--gray-100);
+    font-weight: 600;
+}
+
+/* Chart attribution styling */
+.chart-attribution {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    font-style: italic;
+    z-index: 10;
+}
+
+.chart-attribution a {
+    text-decoration: underline;
+}
+
+.footer-attribution {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-attribution a {
+    color: white;
+    text-decoration: underline;
 } 

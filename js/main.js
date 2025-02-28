@@ -6,12 +6,18 @@
 const App = {
     // Initialize the application
     init: function() {
+        // Initialize navigation before other components
         this.initNavigation();
+        
+        // Continue with other initializations
         this.initScrollEffects();
         this.initFormValidation();
         this.initCookieConsent();
         this.initLazyLoading();
         this.initAccessibility();
+        
+        // Make sure charts.js is loaded
+        this.loadCharts();
         
         // Dispatch event for other scripts to know the app is ready
         document.dispatchEvent(new Event('app:ready'));
@@ -23,25 +29,49 @@ const App = {
         const menuToggle = document.querySelector('.mobile-menu-toggle');
         const navMenu = document.querySelector('.nav-menu');
         
+        // Debug log for menu elements
+        console.log('Navigation init: menuToggle =', menuToggle, 'navMenu =', navMenu);
+        
         if (menuToggle && navMenu) {
-            menuToggle.addEventListener('click', function() {
+            menuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
                 const expanded = this.getAttribute('aria-expanded') === 'true';
                 this.setAttribute('aria-expanded', !expanded);
                 navMenu.classList.toggle('active');
                 document.body.classList.toggle('menu-open');
                 
-                // Update the button text for screen readers
-                this.querySelector('.sr-only').textContent = expanded ? 'Open Menu' : 'Close Menu';
+                // Log menu toggle action for debugging
+                console.log('Menu toggled', !expanded ? 'open' : 'closed');
+                
+                // Toggle icon if using Font Awesome
+                const icon = this.querySelector('i');
+                if (icon) {
+                    if (expanded) {
+                        icon.classList.replace('fa-times', 'fa-bars');
+                    } else {
+                        icon.classList.replace('fa-bars', 'fa-times');
+                    }
+                }
             });
             
-            // Close menu when clicking outside
+            // Also close the menu when clicking outside
             document.addEventListener('click', function(event) {
                 if (navMenu.classList.contains('active') && 
                     !navMenu.contains(event.target) && 
                     !menuToggle.contains(event.target)) {
-                    menuToggle.click();
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    navMenu.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                    
+                    // Reset icon
+                    const icon = menuToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.replace('fa-times', 'fa-bars');
+                    }
                 }
             });
+        } else {
+            console.error('Menu elements not found:', { menuToggle, navMenu });
         }
         
         // Smooth scrolling for navigation links
@@ -73,6 +103,14 @@ const App = {
                         // Set focus to the section for accessibility
                         targetElement.setAttribute('tabindex', '-1');
                         targetElement.focus();
+                        
+                        // Mark as active in navigation
+                        document.querySelectorAll('.nav-menu a').forEach(link => {
+                            link.classList.remove('active');
+                            link.removeAttribute('aria-current');
+                        });
+                        this.classList.add('active');
+                        this.setAttribute('aria-current', 'page');
                     }
                 }
             });
@@ -129,13 +167,36 @@ const App = {
             
             fadeElements.forEach(element => fadeObserver.observe(element));
         }
+        
+        // Add fade-in class to cards for animation
+        document.querySelectorAll('.metric-card, .analysis-card, .resource-card').forEach(card => {
+            card.classList.add('fade-in');
+        });
     },
     
-    // Initialize form validation
+    // Make sure charts are properly loaded
+    loadCharts: function() {
+        // Check if charts.js is loaded
+        if (typeof chartManager !== 'undefined') {
+            // Charts.js is already loaded, initialize directly
+            console.log('Charts.js is already loaded');
+        } else {
+            // Attempt to load charts.js
+            console.log('Loading charts.js script');
+            const script = document.createElement('script');
+            script.src = 'js/charts.js';
+            script.async = true;
+            document.head.appendChild(script);
+        }
+    },
+    
+    // Fix form validation to target the correct form
     initFormValidation: function() {
-        const contactForm = document.getElementById('contact-form');
+        // Change selector to match the form in HTML
+        const contactForm = document.getElementById('inquiry-form');
         
         if (contactForm) {
+            console.log('Contact form found:', contactForm);
             // Form validation messages
             const errorMessages = {
                 required: 'This field is required.',
@@ -264,14 +325,17 @@ const App = {
                     }
                 });
             });
+        } else {
+            console.warn('Contact form not found. Check the form ID.');
         }
     },
     
-    // Initialize cookie consent banner
+    // Initialize cookie consent banner with correct selectors
     initCookieConsent: function() {
         const cookieBanner = document.querySelector('.cookie-banner');
-        const acceptBtn = document.querySelector('.cookie-accept');
-        const declineBtn = document.querySelector('.cookie-decline');
+        // Update selector to match HTML
+        const acceptBtn = document.querySelector('#cookie-accept');
+        const declineBtn = document.querySelector('#cookie-decline');
         
         if (cookieBanner && acceptBtn && declineBtn) {
             // Check if user has already made a choice

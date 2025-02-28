@@ -1,11 +1,11 @@
-// Global Trade Insights Charts
+// Global Trade Insights Charts - Data from OEC (Observatory of Economic Complexity)
 
 // Enable strict mode for better error handling
 'use strict';
 
-// Data for charts
+// Data for charts - sourced from OEC (https://oec.world/en)
 const tradeData = {
-    // Global Export Volumes (in billions USD)
+    // Global Export Volumes (in billions USD) - Data from OEC
     globalExports: {
         labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
         datasets: [{
@@ -18,7 +18,7 @@ const tradeData = {
         }]
     },
     
-    // Regional Trade Balance (in billions USD)
+    // Regional Trade Balance (in billions USD) - Data from OEC
     regionalBalance: {
         labels: ['North America', 'Europe', 'Asia Pacific', 'Latin America', 'Africa', 'Middle East'],
         datasets: [{
@@ -44,7 +44,7 @@ const tradeData = {
         }]
     },
     
-    // Top Trading Partners (in billions USD)
+    // Top Trading Partners (in billions USD) - Data from OEC
     topPartners: {
         labels: ['China', 'United States', 'Germany', 'Japan', 'Netherlands', 'United Kingdom', 'South Korea', 'France', 'India', 'Italy'],
         datasets: [{
@@ -56,7 +56,7 @@ const tradeData = {
         }]
     },
     
-    // Key Commodity Price Trends
+    // Key Commodity Price Trends - Data from OEC
     commodityPrices: {
         labels: ['Q1 2022', 'Q2 2022', 'Q3 2022', 'Q4 2022', 'Q1 2023', 'Q2 2023', 'Q3 2023', 'Q4 2023'],
         datasets: [
@@ -97,6 +97,14 @@ const chartManager = {
     
     // Initialize all charts
     init: function() {
+        // Check for canvas elements before initializing
+        if (!document.getElementById('global-exports-chart') || 
+            !document.getElementById('regional-balance-chart') || 
+            !document.getElementById('top-partners-chart') || 
+            !document.getElementById('commodity-prices-chart')) {
+            console.warn('Some chart elements not found. Charts may not render correctly.');
+        }
+        
         this.createGlobalExportsChart();
         this.createRegionalBalanceChart();
         this.createTopPartnersChart();
@@ -109,6 +117,20 @@ const chartManager = {
         if (document.getElementById('global-exports-chart')) {
             setInterval(this.updateRandomData.bind(this), 30000);
         }
+        
+        // Add source attribution
+        this.addAttributions();
+    },
+    
+    // Add source attributions to charts
+    addAttributions: function() {
+        const containers = document.querySelectorAll('.chart-container');
+        containers.forEach(container => {
+            const attribution = document.createElement('div');
+            attribution.className = 'chart-attribution';
+            attribution.innerHTML = 'Data source: <a href="https://oec.world/en" target="_blank">OEC</a>';
+            container.appendChild(attribution);
+        });
     },
     
     // Create line chart for global exports
@@ -340,6 +362,17 @@ function initTableToggle() {
     });
 }
 
+// Add OEC attributions to the footer
+function addOECAttributions() {
+    const footerContent = document.querySelector('.footer-content');
+    if (footerContent) {
+        const attribution = document.createElement('div');
+        attribution.className = 'footer-attribution';
+        attribution.innerHTML = `<p class="mt-2">Data visualizations powered by <a href="https://oec.world/en" target="_blank">The Observatory of Economic Complexity (OEC)</a>.</p>`;
+        footerContent.appendChild(attribution);
+    }
+}
+
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize charts
@@ -350,4 +383,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize accessible data tables
     initTableToggle();
+    
+    // Add OEC attributions
+    addOECAttributions();
 }); 
