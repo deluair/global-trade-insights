@@ -3,6 +3,20 @@
 // Enable strict mode for better error handling
 'use strict';
 
+// Wait for DOM to be fully loaded before initializing charts
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("Charts.js loaded and DOM ready");
+    
+    // Initialize all chart functionality
+    chartManager.init();
+    
+    // Initialize animations
+    initChartAnimations();
+    
+    // Initialize accessible data tables
+    initTableToggle();
+});
+
 // Data for charts - sourced from OEC (https://oec.world/en)
 const tradeData = {
     // Global Export Volumes (in billions USD) - Data from OEC
@@ -371,19 +385,4 @@ function addOECAttributions() {
         attribution.innerHTML = `<p class="mt-2">Data visualizations powered by <a href="https://oec.world/en" target="_blank">The Observatory of Economic Complexity (OEC)</a>.</p>`;
         footerContent.appendChild(attribution);
     }
-}
-
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize charts
-    chartManager.init();
-    
-    // Initialize animations
-    initChartAnimations();
-    
-    // Initialize accessible data tables
-    initTableToggle();
-    
-    // Add OEC attributions
-    addOECAttributions();
-}); 
+} 

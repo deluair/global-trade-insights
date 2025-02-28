@@ -35,6 +35,8 @@ const App = {
         if (menuToggle && navMenu) {
             menuToggle.addEventListener('click', function(e) {
                 e.preventDefault();
+                e.stopPropagation(); // Prevent event bubbling
+                
                 const expanded = this.getAttribute('aria-expanded') === 'true';
                 this.setAttribute('aria-expanded', !expanded);
                 navMenu.classList.toggle('active');
@@ -88,29 +90,39 @@ const App = {
                         
                         // Close mobile menu if open
                         if (navMenu && navMenu.classList.contains('active')) {
-                            menuToggle.click();
+                            menuToggle.setAttribute('aria-expanded', 'false');
+                            navMenu.classList.remove('active');
+                            document.body.classList.remove('menu-open');
+                            
+                            // Reset icon
+                            const icon = menuToggle.querySelector('i');
+                            if (icon) {
+                                icon.classList.replace('fa-times', 'fa-bars');
+                            }
                         }
                         
-                        // Smooth scroll to target
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                        
-                        // Update URL without page reload
-                        history.pushState(null, '', targetId);
-                        
-                        // Set focus to the section for accessibility
-                        targetElement.setAttribute('tabindex', '-1');
-                        targetElement.focus();
-                        
-                        // Mark as active in navigation
-                        document.querySelectorAll('.nav-menu a').forEach(link => {
-                            link.classList.remove('active');
-                            link.removeAttribute('aria-current');
-                        });
-                        this.classList.add('active');
-                        this.setAttribute('aria-current', 'page');
+                        // Adding a small delay for mobile menu to close before scrolling
+                        setTimeout(() => {
+                            // Smooth scroll to target with offset for fixed header
+                            const headerHeight = document.querySelector('header').offsetHeight;
+                            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Update URL without page reload
+                            history.pushState(null, '', targetId);
+                            
+                            // Mark as active in navigation
+                            document.querySelectorAll('.nav-menu a').forEach(link => {
+                                link.classList.remove('active');
+                                link.removeAttribute('aria-current');
+                            });
+                            this.classList.add('active');
+                            this.setAttribute('aria-current', 'page');
+                        }, 100);
                     }
                 }
             });
