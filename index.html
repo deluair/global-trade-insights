@@ -5,240 +5,465 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Global Trade Insights - Professional data analysis and visualization tools for international trade analysts. Access trade metrics, expert analysis, and resources for informed decision-making.">
     <title>Global Trade Insights | International Trade Analysis</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MEASUREMENT_ID');
+    </script>
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-banner" role="alert" aria-live="polite">
+        <div class="container">
+            <p>We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of cookies. <a href="#" id="cookie-learn-more">Learn more</a></p>
+            <div class="cookie-buttons">
+                <button id="cookie-decline" class="btn btn-secondary">Decline</button>
+                <button id="cookie-accept" class="btn btn-primary">Accept</button>
+            </div>
+        </div>
+    </div>
+
     <header>
         <div class="container">
             <div class="logo">
                 <h1>Global Trade Insights</h1>
                 <p>Data-Driven Trade Analysis</p>
             </div>
-            <nav>
+            <nav aria-label="Main navigation">
                 <ul>
-                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#home" class="active" aria-current="page">Home</a></li>
                     <li><a href="#trade-metrics">Trade Metrics</a></li>
                     <li><a href="#analysis">Analysis</a></li>
                     <li><a href="#resources">Resources</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <div class="mobile-menu">
+            <button class="mobile-menu" aria-label="Toggle menu" aria-expanded="false">
                 <i class="fas fa-bars"></i>
-            </div>
+            </button>
         </div>
     </header>
 
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2>Making Sense of <span>Global Trade Data</span></h2>
-                <p>Comprehensive analysis tools and insights for international trade professionals</p>
-                <div class="hero-buttons">
-                    <a href="#trade-metrics" class="btn btn-primary">Explore Trade Data</a>
-                    <a href="#analysis" class="btn btn-secondary">View Analysis</a>
+    <main id="main-content">
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Making Sense of <span>Global Trade Data</span></h2>
+                    <p>Comprehensive analysis tools and insights for international trade professionals</p>
+                    <div class="hero-buttons">
+                        <a href="#trade-metrics" class="btn btn-primary">Explore Trade Data</a>
+                        <a href="#analysis" class="btn btn-secondary">View Analysis</a>
+                    </div>
+                </div>
+                <div class="hero-image" aria-hidden="true">
+                    <div class="world-map-fallback"></div>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="world-map-fallback"></div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="trade-metrics" class="metrics">
-        <div class="container">
-            <h2 class="section-title">Key Trade Metrics</h2>
-            <p class="section-subtitle">Real-time visualization of critical international trade indicators</p>
-            
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <h3>Global Trade Volume</h3>
-                    <div class="chart-container">
-                        <canvas id="tradeVolumeChart"></canvas>
-                    </div>
-                    <p>Tracking total global merchandise trade volume across major economic regions.</p>
-                </div>
+        <section id="trade-metrics" class="metrics">
+            <div class="container">
+                <h2 class="section-title">Key Trade Metrics</h2>
+                <p class="section-subtitle">Real-time visualization of critical international trade indicators</p>
                 
-                <div class="metric-card">
-                    <h3>Trade Balance Trends</h3>
-                    <div class="chart-container">
-                        <canvas id="tradeBalanceChart"></canvas>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3>Global Export Trends</h3>
+                        <div class="chart-container">
+                            <canvas id="global-exports-chart" aria-label="Line chart showing global export volume trends from 2018 to 2023" role="img"></canvas>
+                            <button class="toggle-table-btn" aria-expanded="false" data-target="global-exports-table">Show Data Table</button>
+                            <div id="global-exports-table" class="data-table-container" aria-hidden="true">
+                                <table class="data-table">
+                                    <caption>Global Export Volumes (in billions USD)</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Year</th>
+                                            <th scope="col">Export Volume (Billions USD)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>2018</td>
+                                            <td>19.5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2019</td>
+                                            <td>19.0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2020</td>
+                                            <td>17.3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2021</td>
+                                            <td>22.3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2022</td>
+                                            <td>24.9</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2023</td>
+                                            <td>25.2</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p>Tracking global export volume trends over the past six years.</p>
                     </div>
-                    <p>Comparative analysis of trade surpluses and deficits among key economies.</p>
-                </div>
-                
-                <div class="metric-card">
-                    <h3>Tariff Impact Analysis</h3>
-                    <div class="chart-container">
-                        <canvas id="tariffImpactChart"></canvas>
+                    
+                    <div class="metric-card">
+                        <h3>Regional Trade Balance</h3>
+                        <div class="chart-container">
+                            <canvas id="regional-balance-chart" aria-label="Bar chart showing regional trade balance for 2023" role="img"></canvas>
+                            <button class="toggle-table-btn" aria-expanded="false" data-target="regional-balance-table">Show Data Table</button>
+                            <div id="regional-balance-table" class="data-table-container" aria-hidden="true">
+                                <table class="data-table">
+                                    <caption>Regional Trade Balance (in billions USD) for 2023</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Region</th>
+                                            <th scope="col">Trade Balance (Billions USD)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>North America</td>
+                                            <td>1.3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Europe</td>
+                                            <td>0.9</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Asia Pacific</td>
+                                            <td>2.4</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Latin America</td>
+                                            <td>-0.5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Africa</td>
+                                            <td>-0.7</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Middle East</td>
+                                            <td>1.8</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p>Comparative analysis of trade surpluses and deficits among major regions.</p>
                     </div>
-                    <p>Measuring the effects of tariff changes on trade flows and economic outcomes.</p>
-                </div>
-                
-                <div class="metric-card">
-                    <h3>Supply Chain Resilience</h3>
-                    <div class="chart-container">
-                        <canvas id="supplyChainChart"></canvas>
+                    
+                    <div class="metric-card">
+                        <h3>Top Trading Partners</h3>
+                        <div class="chart-container">
+                            <canvas id="top-partners-chart" aria-label="Horizontal bar chart showing top 10 trading partners in 2023" role="img"></canvas>
+                            <button class="toggle-table-btn" aria-expanded="false" data-target="top-partners-table">Show Data Table</button>
+                            <div id="top-partners-table" class="data-table-container" aria-hidden="true">
+                                <table class="data-table">
+                                    <caption>Top 10 Global Trading Partners (in billions USD) for 2023</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Country</th>
+                                            <th scope="col">Trade Volume (Billions USD)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>China</td>
+                                            <td>5.9</td>
+                                        </tr>
+                                        <tr>
+                                            <td>United States</td>
+                                            <td>5.2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Germany</td>
+                                            <td>3.3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Japan</td>
+                                            <td>2.1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Netherlands</td>
+                                            <td>1.8</td>
+                                        </tr>
+                                        <tr>
+                                            <td>United Kingdom</td>
+                                            <td>1.7</td>
+                                        </tr>
+                                        <tr>
+                                            <td>South Korea</td>
+                                            <td>1.6</td>
+                                        </tr>
+                                        <tr>
+                                            <td>France</td>
+                                            <td>1.5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>India</td>
+                                            <td>1.3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Italy</td>
+                                            <td>1.2</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p>Ranking of the largest global trading nations by total trade volume.</p>
                     </div>
-                    <p>Assessing vulnerabilities and strengths in global supply chain networks.</p>
+                    
+                    <div class="metric-card">
+                        <h3>Commodity Price Trends</h3>
+                        <div class="chart-container">
+                            <canvas id="commodity-prices-chart" aria-label="Line chart showing key commodity price trends from 2022 to 2023" role="img"></canvas>
+                            <button class="toggle-table-btn" aria-expanded="false" data-target="commodity-prices-table">Show Data Table</button>
+                            <div id="commodity-prices-table" class="data-table-container" aria-hidden="true">
+                                <table class="data-table">
+                                    <caption>Key Commodity Price Trends (2022-2023)</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Period</th>
+                                            <th scope="col">Crude Oil (USD/barrel)</th>
+                                            <th scope="col">Natural Gas (USD/MMBtu)</th>
+                                            <th scope="col">Gold (USD/oz)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Q1 2022</td>
+                                            <td>94.07</td>
+                                            <td>4.95</td>
+                                            <td>1877</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Q2 2022</td>
+                                            <td>111.93</td>
+                                            <td>7.17</td>
+                                            <td>1834</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Q3 2022</td>
+                                            <td>93.60</td>
+                                            <td>8.03</td>
+                                            <td>1729</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Q4 2022</td>
+                                            <td>82.64</td>
+                                            <td>6.26</td>
+                                            <td>1726</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Q1 2023</td>
+                                            <td>81.03</td>
+                                            <td>2.45</td>
+                                            <td>1889</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Q2 2023</td>
+                                            <td>74.14</td>
+                                            <td>2.10</td>
+                                            <td>1978</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Q3 2023</td>
+                                            <td>82.09</td>
+                                            <td>2.64</td>
+                                            <td>1928</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Q4 2023</td>
+                                            <td>78.41</td>
+                                            <td>2.51</td>
+                                            <td>2032</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p>Tracking price movements of key globally traded commodities.</p>
+                    </div>
+                    
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="analysis" class="analysis">
-        <div class="container">
-            <h2 class="section-title">Trade Analysis & Insights</h2>
-            <p class="section-subtitle">Expert interpretation of current global trade patterns</p>
-            
-            <div class="analysis-grid">
-                <div class="analysis-card">
-                    <div class="analysis-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Emerging Market Analysis</h3>
-                    <p>Comprehensive assessment of trade potential in developing economies and emerging markets.</p>
-                    <a href="#" class="read-more">Read analysis <i class="fas fa-arrow-right"></i></a>
-                </div>
+        <section id="analysis" class="analysis">
+            <div class="container">
+                <h2 class="section-title">Trade Analysis & Insights</h2>
+                <p class="section-subtitle">Expert interpretation of current global trade patterns</p>
                 
-                <div class="analysis-card">
-                    <div class="analysis-icon">
-                        <i class="fas fa-file-contract"></i>
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <div class="analysis-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Emerging Market Analysis</h3>
+                        <p>Comprehensive assessment of trade potential in developing economies and emerging markets.</p>
+                        <a href="#" class="read-more">Read analysis <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <h3>Trade Agreement Impact</h3>
-                    <p>Evaluating the economic effects of recent and proposed international trade agreements.</p>
-                    <a href="#" class="read-more">Read analysis <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="analysis-card">
-                    <div class="analysis-icon">
-                        <i class="fas fa-industry"></i>
+                    
+                    <div class="analysis-card">
+                        <div class="analysis-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <h3>Trade Agreement Impact</h3>
+                        <p>Evaluating the economic effects of recent and proposed international trade agreements.</p>
+                        <a href="#" class="read-more">Read analysis <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <h3>Sectoral Deep Dives</h3>
-                    <p>In-depth analysis of trade patterns within key industrial and service sectors.</p>
-                    <a href="#" class="read-more">Read analysis <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="analysis-card">
-                    <div class="analysis-icon">
-                        <i class="fas fa-globe-americas"></i>
+                    
+                    <div class="analysis-card">
+                        <div class="analysis-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3>Sectoral Deep Dives</h3>
+                        <p>In-depth analysis of trade patterns within key industrial and service sectors.</p>
+                        <a href="#" class="read-more">Read analysis <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <h3>Geopolitical Risk Factors</h3>
-                    <p>Assessing how political developments and policy shifts impact international trade flows.</p>
-                    <a href="#" class="read-more">Read analysis <i class="fas fa-arrow-right"></i></a>
+                    
+                    <div class="analysis-card">
+                        <div class="analysis-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h3>Geopolitical Risk Factors</h3>
+                        <p>Assessing how political developments and policy shifts impact international trade flows.</p>
+                        <a href="#" class="read-more">Read analysis <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="resources" class="resources">
-        <div class="container">
-            <h2 class="section-title">Trade Resources</h2>
-            <p class="section-subtitle">Essential tools and information for trade professionals</p>
-            
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <h3>Data Sources</h3>
-                    <ul>
-                        <li><a href="https://comtrade.un.org/" target="_blank">UN Comtrade Database</a></li>
-                        <li><a href="https://data.wto.org/" target="_blank">WTO Statistics Database</a></li>
-                        <li><a href="https://www.imf.org/en/Data" target="_blank">IMF Data Portal</a></li>
-                        <li><a href="https://unctadstat.unctad.org/" target="_blank">UNCTAD Statistics</a></li>
-                        <li><a href="https://oec.world/" target="_blank">Observatory of Economic Complexity</a></li>
-                    </ul>
-                </div>
+        <section id="resources" class="resources">
+            <div class="container">
+                <h2 class="section-title">Trade Resources</h2>
+                <p class="section-subtitle">Essential tools and information for trade professionals</p>
                 
-                <div class="resource-card">
-                    <h3>Research Publications</h3>
-                    <ul>
-                        <li><a href="#" target="_blank">Quarterly Trade Outlook Report</a></li>
-                        <li><a href="#" target="_blank">Supply Chain Resilience Index</a></li>
-                        <li><a href="#" target="_blank">Global Tariff Monitor</a></li>
-                        <li><a href="#" target="_blank">Emerging Markets Trade Potential</a></li>
-                        <li><a href="#" target="_blank">Sustainable Trade Practices Review</a></li>
-                    </ul>
-                </div>
-                
-                <div class="resource-card">
-                    <h3>Trade Policy Updates</h3>
-                    <ul>
-                        <li><a href="https://www.wto.org/" target="_blank">WTO News and Events</a></li>
-                        <li><a href="#" target="_blank">Regional Trade Agreement Tracker</a></li>
-                        <li><a href="#" target="_blank">Policy Change Alert System</a></li>
-                        <li><a href="#" target="_blank">Regulatory Framework Database</a></li>
-                        <li><a href="#" target="_blank">Trade Dispute Resolution Updates</a></li>
-                    </ul>
-                </div>
-                
-                <div class="resource-card">
-                    <h3>Analysis Tools</h3>
-                    <ul>
-                        <li><a href="#" target="_blank">Trade Flow Simulator</a></li>
-                        <li><a href="#" target="_blank">Tariff Impact Calculator</a></li>
-                        <li><a href="#" target="_blank">Market Access Assessment Tool</a></li>
-                        <li><a href="#" target="_blank">Comparative Advantage Analyzer</a></li>
-                        <li><a href="#" target="_blank">Trade Compliance Checker</a></li>
-                    </ul>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <h3>Data Sources</h3>
+                        <ul>
+                            <li><a href="https://comtrade.un.org/" target="_blank">UN Comtrade Database</a></li>
+                            <li><a href="https://data.wto.org/" target="_blank">WTO Statistics Database</a></li>
+                            <li><a href="https://www.imf.org/en/Data" target="_blank">IMF Data Portal</a></li>
+                            <li><a href="https://unctadstat.unctad.org/" target="_blank">UNCTAD Statistics</a></li>
+                            <li><a href="https://oec.world/" target="_blank">Observatory of Economic Complexity</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Research Publications</h3>
+                        <ul>
+                            <li><a href="#" target="_blank">Quarterly Trade Outlook Report</a></li>
+                            <li><a href="#" target="_blank">Supply Chain Resilience Index</a></li>
+                            <li><a href="#" target="_blank">Global Tariff Monitor</a></li>
+                            <li><a href="#" target="_blank">Emerging Markets Trade Potential</a></li>
+                            <li><a href="#" target="_blank">Sustainable Trade Practices Review</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Trade Policy Updates</h3>
+                        <ul>
+                            <li><a href="https://www.wto.org/" target="_blank">WTO News and Events</a></li>
+                            <li><a href="#" target="_blank">Regional Trade Agreement Tracker</a></li>
+                            <li><a href="#" target="_blank">Policy Change Alert System</a></li>
+                            <li><a href="#" target="_blank">Regulatory Framework Database</a></li>
+                            <li><a href="#" target="_blank">Trade Dispute Resolution Updates</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Analysis Tools</h3>
+                        <ul>
+                            <li><a href="#" target="_blank">Trade Flow Simulator</a></li>
+                            <li><a href="#" target="_blank">Tariff Impact Calculator</a></li>
+                            <li><a href="#" target="_blank">Market Access Assessment Tool</a></li>
+                            <li><a href="#" target="_blank">Comparative Advantage Analyzer</a></li>
+                            <li><a href="#" target="_blank">Trade Compliance Checker</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Contact</h2>
-            <p class="section-subtitle">Get in touch for personalized trade analysis and consulting</p>
-            
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <p>contact@globaltrade-insights.com</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <p>+1 (555) 123-4567</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p>123 International Plaza, New York, NY 10001</p>
-                    </div>
-                    <div class="social-media">
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                    </div>
-                </div>
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+                <p class="section-subtitle">Get in touch for personalized trade analysis and consulting</p>
                 
-                <div class="contact-form">
-                    <form id="inquiry-form">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>contact@globaltrade-insights.com</p>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <p>+1 (555) 123-4567</p>
                         </div>
-                        <div class="form-group">
-                            <label for="organization">Organization</label>
-                            <input type="text" id="organization" name="organization">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>123 International Plaza, New York, NY 10001</p>
                         </div>
-                        <div class="form-group">
-                            <label for="message">Your Inquiry</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                        <div class="social-media">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit Inquiry</button>
-                    </form>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form id="inquiry-form">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="organization">Organization</label>
+                                <input type="text" id="organization" name="organization">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Your Inquiry</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit Inquiry</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
         <div class="container">

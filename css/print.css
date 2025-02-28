@@ -1,0 +1,159 @@
+/* Print Stylesheet for Global Trade Insights */
+
+/* General Print Settings */
+@page {
+    margin: 0.5cm;
+    size: auto;
+}
+
+body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+    font-family: 'Georgia', serif;
+}
+
+/* Hide Elements Not Needed for Print */
+.skip-link,
+.mobile-menu,
+.cookie-banner,
+.hero-buttons,
+.social-media,
+.contact-form,
+.footer-links,
+nav {
+    display: none !important;
+}
+
+/* Container Width */
+.container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+}
+
+/* Headers and Text */
+h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    font-family: 'Georgia', serif;
+    margin-top: 20pt;
+}
+
+p, ul, ol, dl, blockquote {
+    page-break-inside: avoid;
+}
+
+p {
+    orphans: 3;
+    widows: 3;
+}
+
+/* Links */
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+a[href^="#"]:after,
+a[href^="javascript:"]:after,
+a[href^="mailto:"]:after {
+    content: "";
+}
+
+/* Images */
+img, .hero-image, .world-map-fallback {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+    border: 1px solid #ddd;
+}
+
+/* Chart Displays */
+.chart-container {
+    height: 200pt !important;
+    page-break-inside: avoid;
+    margin-bottom: 15pt;
+}
+
+/* Cards and Sections */
+.metric-card, 
+.analysis-card,
+.resource-card {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 15pt;
+    border: 1px solid #ddd;
+    padding: 10pt;
+}
+
+/* Grid Layouts */
+.metrics-grid,
+.analysis-grid,
+.resources-grid {
+    display: block;
+}
+
+.metrics-grid > *,
+.analysis-grid > *,
+.resources-grid > * {
+    margin-bottom: 20pt;
+}
+
+/* Section Headers */
+.section-title {
+    font-size: 18pt;
+    margin-top: 25pt;
+}
+
+.section-subtitle {
+    font-size: 14pt;
+}
+
+/* Header/Footer Content */
+header {
+    position: static;
+    box-shadow: none;
+    margin-bottom: 20pt;
+}
+
+.logo h1 {
+    font-size: 20pt;
+}
+
+footer {
+    margin-top: 20pt;
+    border-top: 1pt solid #ddd;
+    padding-top: 10pt;
+    background: none !important;
+    color: #000 !important;
+}
+
+/* Page Breaks */
+#home, 
+#trade-metrics, 
+#analysis, 
+#resources, 
+#contact {
+    page-break-before: always;
+}
+
+#home {
+    page-break-before: avoid;
+}
+
+/* Add watermark or branding */
+body:after {
+    content: "Global Trade Insights - Printed Analysis";
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: 9pt;
+    color: #aaa;
+} 
