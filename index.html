@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Global Trade Insights - Professional data analysis and visualization tools for international trade analysts. Access trade metrics, expert analysis, and resources for informed decision-making.">
+    <title>Global Trade Insights | International Trade Analysis</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Global Trade Insights</h1>
+                <p>Data-Driven Trade Analysis</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#trade-metrics">Trade Metrics</a></li>
+                    <li><a href="#analysis">Analysis</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Making Sense of <span>Global Trade Data</span></h2>
+                <p>Comprehensive analysis tools and insights for international trade professionals</p>
+                <div class="hero-buttons">
+                    <a href="#trade-metrics" class="btn btn-primary">Explore Trade Data</a>
+                    <a href="#analysis" class="btn btn-secondary">View Analysis</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="world-map-fallback"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="trade-metrics" class="metrics">
+        <div class="container">
+            <h2 class="section-title">Key Trade Metrics</h2>
+            <p class="section-subtitle">Real-time visualization of critical international trade indicators</p>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>Global Trade Volume</h3>
+                    <div class="chart-container">
+                        <canvas id="tradeVolumeChart"></canvas>
+                    </div>
+                    <p>Tracking total global merchandise trade volume across major economic regions.</p>
+                </div>
+                
+                <div class="metric-card">
+                    <h3>Trade Balance Trends</h3>
+                    <div class="chart-container">
+                        <canvas id="tradeBalanceChart"></canvas>
+                    </div>
+                    <p>Comparative analysis of trade surpluses and deficits among key economies.</p>
+                </div>
+                
+                <div class="metric-card">
+                    <h3>Tariff Impact Analysis</h3>
+                    <div class="chart-container">
+                        <canvas id="tariffImpactChart"></canvas>
+                    </div>
+                    <p>Measuring the effects of tariff changes on trade flows and economic outcomes.</p>
+                </div>
+                
+                <div class="metric-card">
+                    <h3>Supply Chain Resilience</h3>
+                    <div class="chart-container">
+                        <canvas id="supplyChainChart"></canvas>
+                    </div>
+                    <p>Assessing vulnerabilities and strengths in global supply chain networks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="analysis" class="analysis">
+        <div class="container">
+            <h2 class="section-title">Trade Analysis & Insights</h2>
+            <p class="section-subtitle">Expert interpretation of current global trade patterns</p>
+            
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <div class="analysis-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Emerging Market Analysis</h3>
+                    <p>Comprehensive assessment of trade potential in developing economies and emerging markets.</p>
+                    <a href="#" class="read-more">Read analysis <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="analysis-card">
+                    <div class="analysis-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Trade Agreement Impact</h3>
+                    <p>Evaluating the economic effects of recent and proposed international trade agreements.</p>
+                    <a href="#" class="read-more">Read analysis <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="analysis-card">
+                    <div class="analysis-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Sectoral Deep Dives</h3>
+                    <p>In-depth analysis of trade patterns within key industrial and service sectors.</p>
+                    <a href="#" class="read-more">Read analysis <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="analysis-card">
+                    <div class="analysis-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>Geopolitical Risk Factors</h3>
+                    <p>Assessing how political developments and policy shifts impact international trade flows.</p>
+                    <a href="#" class="read-more">Read analysis <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resources" class="resources">
+        <div class="container">
+            <h2 class="section-title">Trade Resources</h2>
+            <p class="section-subtitle">Essential tools and information for trade professionals</p>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>Data Sources</h3>
+                    <ul>
+                        <li><a href="https://comtrade.un.org/" target="_blank">UN Comtrade Database</a></li>
+                        <li><a href="https://data.wto.org/" target="_blank">WTO Statistics Database</a></li>
+                        <li><a href="https://www.imf.org/en/Data" target="_blank">IMF Data Portal</a></li>
+                        <li><a href="https://unctadstat.unctad.org/" target="_blank">UNCTAD Statistics</a></li>
+                        <li><a href="https://oec.world/" target="_blank">Observatory of Economic Complexity</a></li>
+                    </ul>
+                </div>
+                
+                <div class="resource-card">
+                    <h3>Research Publications</h3>
+                    <ul>
+                        <li><a href="#" target="_blank">Quarterly Trade Outlook Report</a></li>
+                        <li><a href="#" target="_blank">Supply Chain Resilience Index</a></li>
+                        <li><a href="#" target="_blank">Global Tariff Monitor</a></li>
+                        <li><a href="#" target="_blank">Emerging Markets Trade Potential</a></li>
+                        <li><a href="#" target="_blank">Sustainable Trade Practices Review</a></li>
+                    </ul>
+                </div>
+                
+                <div class="resource-card">
+                    <h3>Trade Policy Updates</h3>
+                    <ul>
+                        <li><a href="https://www.wto.org/" target="_blank">WTO News and Events</a></li>
+                        <li><a href="#" target="_blank">Regional Trade Agreement Tracker</a></li>
+                        <li><a href="#" target="_blank">Policy Change Alert System</a></li>
+                        <li><a href="#" target="_blank">Regulatory Framework Database</a></li>
+                        <li><a href="#" target="_blank">Trade Dispute Resolution Updates</a></li>
+                    </ul>
+                </div>
+                
+                <div class="resource-card">
+                    <h3>Analysis Tools</h3>
+                    <ul>
+                        <li><a href="#" target="_blank">Trade Flow Simulator</a></li>
+                        <li><a href="#" target="_blank">Tariff Impact Calculator</a></li>
+                        <li><a href="#" target="_blank">Market Access Assessment Tool</a></li>
+                        <li><a href="#" target="_blank">Comparative Advantage Analyzer</a></li>
+                        <li><a href="#" target="_blank">Trade Compliance Checker</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <p class="section-subtitle">Get in touch for personalized trade analysis and consulting</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>contact@globaltrade-insights.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>123 International Plaza, New York, NY 10001</p>
+                    </div>
+                    <div class="social-media">
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="inquiry-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="organization">Organization</label>
+                            <input type="text" id="organization" name="organization">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Inquiry</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Global Trade Insights</h3>
+                    <p>Data-driven trade analysis for informed decision making</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#trade-metrics">Trade Metrics</a></li>
+                            <li><a href="#analysis">Analysis</a></li>
+                            <li><a href="#resources">Resources</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Trade Services</h4>
+                        <ul>
+                            <li><a href="#">Custom Data Analysis</a></li>
+                            <li><a href="#">Market Entry Assessment</a></li>
+                            <li><a href="#">Trade Policy Consulting</a></li>
+                            <li><a href="#">Supply Chain Optimization</a></li>
+                            <li><a href="#">Trade Compliance Training</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Data Use Policy</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Global Trade Insights. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
