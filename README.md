@@ -2,6 +2,15 @@
 
 A professional website for international trade analysts to visualize and analyze global trade data.
 
+## 🔄 Recent Updates (February 28, 2025)
+
+- Fixed mobile menu toggle functionality
+- Added proper attributions for OEC (Observatory of Economic Complexity) data
+- Enhanced accessibility features
+- Improved print stylesheets
+- Added better chart attributions
+- Re-deployed website with latest enhancements
+
 ![Global Trade Insights Screenshot](screenshot.png)
 
 ## 🌐 Overview
